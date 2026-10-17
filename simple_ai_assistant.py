@@ -1,4 +1,3 @@
-
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
@@ -19,6 +18,7 @@ messages.append(
         "content": "You are a helpful assistant"
     }
 )
+
 while True:
     user_input = input("\n You: ")
     if user_input.lower() in ["exit", "quit"]:
