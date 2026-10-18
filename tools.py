@@ -1,6 +1,8 @@
 from datetime import datetime
 import os
 import requests
+import json
+
 def get_current_time () :
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -11,24 +13,24 @@ def get_city_current_weather(city_name):
         return f"Failed to fetch weather data for {city_name}. Please try again later."
     return resp.text
 
-def get_news_headlines():
+def get_city() :
+    return "Indore"
 
-    url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=4871a74a66984e3c880618aa8247a6d6"
+# def get_news_headlines():
 
-    resp = requests.get(url, timeout=10)
+#     url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=4871a74a66984e3c880618aa8247a6d6"
 
-    if resp.status_code == 200:
-        data = resp.json()
-        headlines = []
+#     resp = requests.get(url, timeout=10)
 
-        for article in data.get("articles", []):
-            headlines.append({
-                "title": article.get("title", "No title")
-            })
+#     data = resp.json()
+#     headlines = []
 
-        return headlines
+#     for article in data.get("articles", []):
+#         headlines.append({
+#             "title": article.get("title")
+#         })
 
-    return f"Failed to fetch news: {resp.status_code} - {resp.text}"
+#     return headlines
 
 TOOLS =[{
     "type" : "function",
@@ -51,21 +53,30 @@ TOOLS =[{
             "required" : ["city_name"]
             }
         }
-    },
+    }, 
     {
     "type" : "function",
-    "function" : {
-        "name" : "get_news_headlines",
-        "description" : "Returns the latest news headlines for a usa",
-        "parameters" : {
-            "type" : "object",
-            "properties" : {}
+        "function" : {
+            "name" : "get_city",
+            "description" : "Returns the name of a city, whenever the user mentions for my city, my home, place where I live etc.",
+            "parameters" : {"type" : "object", "properties" : {}}
         }
-    }
     }]
+    # {
+    # "type" : "function",
+    # "function" : {
+    #     "name" : "get_news_headlines",
+    #     "description" : "Returns the latest news headlines for a usa",
+    #     "parameters" : {
+    #         "type" : "object",
+    #         "properties" : {}
+    #     }
+    # }
+    # }
 
 FUNCTION_NAME_TO_FUNCTION_MAP = {
     "get_current_time" : get_current_time,
     "get_city_current_weather" : get_city_current_weather,
-    "get_news_headlines" : get_news_headlines
+    "get_city" : get_city
+    # "get_news_headlines" : get_news_headlines
 }
