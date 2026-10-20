@@ -21,8 +21,6 @@
 
 ## 🚀 What is this?
 
-<img src="https://github.com/MAZHARMIK/Interview_DS_Algo/blob/master/codestorywithmik.png?raw=true" align="right" width="320"/>
-
 A **local AI agent built from scratch in Python**. It talks to a model running on [Ollama](https://ollama.com) through the OpenAI-compatible API, so there is **no paid key and no framework** hiding the logic.
 
 It remembers the conversation, follows a system prompt, and can use tools **in several steps**. For example, it first finds your city, then fetches the weather for that city.
@@ -203,14 +201,5 @@ python-ai-agent-ollama/
 <div align="center">
 
 ### 🙌 If this helped you, a ⭐ goes a long way. Thank you!
-
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@codestorywithMIK)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp_Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Va6kVSjICVfiVdsHgi1A)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/codestorywithmik/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mazhar-imam-khan-95a34ab3/)
-
-
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ec4899,100:6366f1&height=120&section=footer" width="100%"/>
 
 </div>
