@@ -14,11 +14,6 @@
 
 <br/>
 
-| Playlist | What it covers |
-|---|---|
-| ![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white) [**AI Fundamentals**](https://www.youtube.com/watch?v=fMHGSx8B9gs&list=PLUqOqHuQynYk) | Tokens, embeddings, vector databases and RAG. Watch this first if the basics are new to you |
-| ![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white) [**Advanced AI**](https://www.youtube.com/watch?v=f0HBW-47wwU&list=PLGSKQmIKK2zQ) | This project, built step by step (videos 1 to 10 in the table above) |
-
 
 </div>
 
@@ -214,18 +209,7 @@ python-ai-agent-ollama/
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/codestorywithmik/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mazhar-imam-khan-95a34ab3/)
 
-<sub>Licensed under <a href="LICENSE">MIT</a></sub>
 
----
-
-## ☕ Support codestorywithMIK (No Pressure)
-
-Education here is **100% free and always will be.** 💙
-If the content helped you and you'd like to support the channel with a coffee:
-
-**UPI:** `imammazhar4@ybl`
-
----
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ec4899,100:6366f1&height=120&section=footer" width="100%"/>
 
