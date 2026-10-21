@@ -16,21 +16,22 @@ def get_city_current_weather(city_name):
 def get_city() :
     return "Indore"
 
-# def get_news_headlines():
+def get_news_headlines():
 
-#     url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=4871a74a66984e3c880618aa8247a6d6"
+    url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=4871a74a66984e3c880618aa8247a6d6"
 
-#     resp = requests.get(url, timeout=10)
+    resp = requests.get(url, timeout=10)
+    resp.raise_for_status()
+    data = resp.json()
+    headlines = []
 
-#     data = resp.json()
-#     headlines = []
+    for article in data.get("articles", []):
+        headlines.append({
+            "News" : article.get("name"),
+            "title": article.get("title")
+        })
 
-#     for article in data.get("articles", []):
-#         headlines.append({
-#             "title": article.get("title")
-#         })
-
-#     return headlines
+    return headlines
 
 TOOLS =[{
     "type" : "function",
@@ -61,24 +62,25 @@ TOOLS =[{
             "description" : "Returns the name of a city, whenever the user mentions for my city, my home, place where I live etc.",
             "parameters" : {"type" : "object", "properties" : {}}
         }
+    }, 
+    {
+    "type" : "function",
+    "function" : {
+        "name" : "get_news_headlines",
+        "description" : "Returns the latest news headlines when the user asks for news, latest news, news headlines, news updates etc.",
+        "parameters" : {
+            "type" : "object",
+            "properties" : {}
+        }
+    } 
     }]
-    # {
-    # "type" : "function",
-    # "function" : {
-    #     "name" : "get_news_headlines",
-    #     "description" : "Returns the latest news headlines for a usa",
-    #     "parameters" : {
-    #         "type" : "object",
-    #         "properties" : {}
-    #     }
-    # }
-    # }
+    
 
 FUNCTION_NAME_TO_FUNCTION_MAP = {
     "get_current_time" : get_current_time,
     "get_city_current_weather" : get_city_current_weather,
-    "get_city" : get_city
-    # "get_news_headlines" : get_news_headlines
+    "get_city" : get_city,
+    "get_news_headlines" : get_news_headlines
 }
 
 def run_tool(tool_call):

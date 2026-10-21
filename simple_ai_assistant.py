@@ -16,7 +16,7 @@ messages = []
 messages.append(
     {
         "role": "system",
-        "content": "You are a helpful assistant"
+        "content": "You are a helpful assistant and give point to point answers. Dont give unneccesary information."
     }
 )
 
