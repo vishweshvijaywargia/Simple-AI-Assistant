@@ -8,6 +8,7 @@ client = OpenAI(
     api_key=os.getenv("API_KEY")            
 )
 
+full_response = ""
 stream = client.chat.completions.create(
     model = os.getenv("MODEL"),
     messages = [
@@ -19,4 +20,5 @@ stream = client.chat.completions.create(
 for chunk in stream:
     piece = chunk.choices[0].delta.content
     if piece:
+        full_response += piece
         print(piece, end="", flush=True)  
