@@ -130,10 +130,13 @@ while True:
     # Chained Tool Calling
     for step in range(MAX_STEPS):
         full_response, tool_calls = stream_chat(messages)
-
-        #msg = response.choices[0].message
-
         if not tool_calls:
+            messages.append(
+                {
+                    "role": "assistant",
+                    "content": full_response,
+                }
+            )
             break
 
         log(f"Step {step + 1}: model requested {len(tool_calls)} tool calls")
