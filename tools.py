@@ -3,6 +3,7 @@ import os
 import json
 from utilities.utilities import log
 import requests
+from rag import search
 
 def get_current_time () :
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -33,7 +34,27 @@ def get_news_headlines():
 
     return headlines
 
-TOOLS =[{
+def search_knowledge_base(query):
+    results = search(query, top_k=3)
+    log(f"Search results for query '{query}'")
+
+    for r in results:
+        log(f"Score: {r['score']:.2f} - Source: {r['source']} # Chunk ID: {r['chunk_id']}")
+    
+    blocks = []
+
+    for r in results:
+        sourceFileName = r['source']
+        chunkId = r['chunk_id']
+        chunkText = r['text']
+
+        header = f"Source: {sourceFileName} # Chunk ID: {chunkId}\n"
+        block = f"{header}\n{chunkText}"
+        blocks.append(block)
+
+    return "\n\n".join(blocks)
+
+TOOLS = [{
     "type" : "function",
     "function" : {
         "name" : "get_current_time",
@@ -73,6 +94,20 @@ TOOLS =[{
             "properties" : {}
         }
     } 
+    }, 
+    {
+    "type" : "function",
+    "function" : {
+        "name" : "search_knowledge_base",
+        "description" : "Searches the knowledge base for relevant information based on the user's query regarding the documents/policies of his/her organization that is Vijayvargiya & Associates",
+        "parameters" : {
+            "type" : "object",
+            "properties" : {
+                "query" : {"type" : "string", "description" : "The user's query to search in the knowledge base"}
+            },
+            "required" : ["query"]
+        }
+    }
     }]
     
 
@@ -80,7 +115,8 @@ FUNCTION_NAME_TO_FUNCTION_MAP = {
     "get_current_time" : get_current_time,
     "get_city_current_weather" : get_city_current_weather,
     "get_city" : get_city,
-    "get_news_headlines" : get_news_headlines
+    "get_news_headlines" : get_news_headlines,
+    "search_knowledge_base" : search_knowledge_base
 }
 
 def run_tool(tool_call):
